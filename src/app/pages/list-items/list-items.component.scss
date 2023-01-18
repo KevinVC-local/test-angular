@@ -1,0 +1,299 @@
+.content {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+
+/* STYLE TABLE RESPONSIVE HOVER */
+.c-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #fff;
+  thead {
+    background: #fff;
+  }
+  thead th {
+    padding: 0.75rem;
+    border-top: 1px solid #9d9d9d;
+    border-bottom: 2px solid #9d9d9d;
+    background: #fff;
+    color: #9d9d9d;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+  tr {
+    height: 40px;
+    text-align: center;
+  }
+  td {
+    padding: 0.75rem;
+    border-top: 1px solid #9d9d9d;
+    font-size: 0.8rem;
+    vertical-align: middle;
+  }
+  &-fix-header {
+    height: 65vh;
+    overflow-y: auto;
+    .sticky {
+      position: sticky;
+      top: -1px;
+    }
+  }
+  &-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* STYLE NG-AUTOCOMPLETE */
+.ng-autocomplete {
+  width: 100%;
+}
+.ng-autocomplete {
+  ::ng-deep {
+    .autocomplete-container {
+      /*height: 28px;*/
+      box-shadow: none;
+    }
+    .autocomplete-container .input-container input {
+      text-transform: uppercase;
+      height: 38px !important;
+      padding: 0.3rem;
+      border-radius: 0.2rem;
+      line-height: 1.5;
+      border: 1px solid #ced4da;
+      box-shadow: inset 0 0 0 transparent;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .autocomplete-container .input-container input::placeholder {
+      text-transform: none;
+      font-weight: 100;
+      color: #939ba2;
+      opacity: 1;
+    }
+    .autocomplete-container .suggestions-container ul {
+      max-height: 230px;
+    }
+    .autocomplete-container .suggestions-container ul li a {
+      padding: 5px 5px 5px 15px;
+    }
+    .autocomplete-container .suggestions-container.is-visible {
+      z-index: 9999;
+    }
+  }
+}
+.ng-autocomplete .autocomplete-container {
+  box-shadow: none;
+}
+.ng-autocomplete .autocomplete-container .input-container {
+  box-shadow: none !important;
+}
+.ng-autocomplete .autocomplete-container .input-container input {
+  text-transform: uppercase;
+  height: 38px !important;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+  line-height: 1.5;
+  border: 1px solid #ced4da;
+  box-shadow: inset 0 0 0 transparent;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.ng-autocomplete .autocomplete-container .input-container input::placeholder {
+  text-transform: none;
+  color: #939ba2;
+  font-weight: 100;
+  opacity: 1;
+}
+.ng-autocomplete .autocomplete-container .suggestions-container ul {
+  max-height: 230px;
+}
+.ng-autocomplete .autocomplete-container .suggestions-container ul li a {
+  padding: 5px 5px 5px 15px;
+}
+.ng-autocomplete .autocomplete-container .suggestions-container.is-visible {
+  z-index: 9999;
+}
+
+/* STYLE CARD EFECT HOVER MOUSEMOVE */
+
+h1 {
+  color: #3e3e42;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  transform: translateZ(35px);
+}
+
+h3 {
+  color: #eb285d;
+  font-size: 16px;
+  margin-bottom: 6px;
+  transform: translateZ(25px);
+}
+
+.cards {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, 0.17);
+  display: inline-block;
+  padding: 30px 35px;
+  perspective: 1800px;
+  text-align: left;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform: rotateX(11deg) rotateY(16.5deg);
+  min-width: 350px;
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px -5px rgba(0, 0, 0, 0.6);
+  // cursor: pointer;
+  display: inline-block;
+  height: 250px;
+  overflow: hidden;
+  perspective: 1200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translatez(35px);
+  transition: transform 200ms ease-out;
+  width: 275px;
+  text-align: center;
+
+  // &:hover {
+  //   box-shadow: 5px 5px 20px -7px rgba(0,0,0,0.5);
+  //   transform: translatez(60px);
+  // }
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+.img-not-fount {
+  width: 100%;
+  display: block;
+}
+
+.padding-none {
+  padding: 0px !important;
+}
+
+.card__img {
+  position: relative;
+  height: 100%;
+}
+
+.card__bg {
+  bottom: -50px;
+  left: -50px;
+  position: absolute;
+  right: -50px;
+  top: -50px;
+  transform-origin: 50% 50%;
+  transform: translateZ(-50px);
+  z-index: 0;
+}
+
+.card__one {
+  .card__img {
+    top: 14px;
+    right: -10px;
+    height: 110%;
+  }
+  .card__bg {
+    background: url("./../../../assets/img/img-pokemon.jpg") center / cover
+      no-repeat;
+  }
+  .card__text {
+    //background-color: #254b60;
+  }
+}
+
+.card__text {
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+.card__title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 10px;
+  margin-bottom: 3px;
+}
+
+.notice {
+  background: gold;
+  border-top-left-radius: 6px;
+  bottom: 0;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 8px 10px;
+  position: absolute;
+  right: -20px;
+}
+
+.twitter__link {
+  cursor: pointer;
+  position: absolute;
+  right: -10px;
+  top: 12px;
+  z-index: -1;
+  background: #00aced;
+  border-radius: 20px;
+  height: 30px;
+  text-decoration: none;
+  padding-right: 10px;
+  justify-content: space-between;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+  width: 74px;
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.twitter__icon {
+  height: 30px;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+  .content {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  .content_card {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .cards {
+    min-width: 280px;
+    padding: 15px 20px;
+  }
+  .card {
+    width: 220px;
+    height: 220px;
+  }
+}

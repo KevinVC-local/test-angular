@@ -1,0 +1,93 @@
+<div class="content">
+    <div class="row w-100">
+        <div class="col-md-7 col-12 me-0">
+            <section class="d-flex justify-content-center align-content-center flex-column">
+                <!-- SECTION TABLE LIST -->
+                <section class="c-table-responsive c-table-fix-header">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name Pokemon</th>
+                                <th scope="col" class="sticky">
+                                    <ng-autocomplete class="c-form-search__input" [initialValue]="this.listPokemons"
+                                        (selected)='completePokemon($event)' (inputCleared)='cleanPokemon($event)'
+                                        [data]="listPokemons" [searchKeyword]="keyword"
+                                        (inputChanged)='this.filterPokemon.next($event)' [itemTemplate]="tplCNombre"
+                                        placeholder="Search Pokemon" formControlName="nombre">
+                                    </ng-autocomplete>
+                                    <ng-template #tplCNombre let-item>
+                                        <a [innerHTML]="item.name"></a>
+                                    </ng-template>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody style="cursor: pointer;">
+                            <ng-container *ngIf="!isLoadingPokemon; else isLoading">
+
+                                <tr *ngFor="let pokemon of listPokemons" (click)="handleSelectPokemon(pokemon)">
+                                    <td colspan="2">{{pokemon.name | titlecase}}</td>
+                                </tr>
+                            </ng-container>
+
+                        </tbody>
+                    </table>
+                </section>
+                <!-- SECTION PAGINATION -->
+                <div class="d-flex flex-row justify-content-end mt-3">
+                    <ngb-pagination [collectionSize]="totalElements" [(page)]="currentPage" [pageSize]="limit"
+                        [maxSize]="4" (pageChange)="handleLoadPage($event)">
+                    </ngb-pagination>
+                </div>
+            </section>
+
+        </div>
+        <!-- SECTION CARD VIEW DETAIL -->
+        <div class="col-md-5 col-12">
+            <div class="content_card d-flex justify-content-center align-content-center">
+                <div class="cards" [class.p-0]="!selectPokemon">
+                    <ng-container *ngIf="selectPokemon; else isNoImage">
+                        <div class="d-flex">
+                            <ng-container *ngFor="let type of selectPokemon.types">
+                                <h3 class="me-1"> | {{ type?.type?.name | uppercase }}</h3>
+                            </ng-container>
+                        </div>
+                        <h2>{{ selectPokemon?.name | uppercase }}</h2>
+                        <div class="card card__one">
+                            <div class="card__bg"></div>
+                            <img class="card__img" appImageError [src]="selectPokemon?.sprites?.front_default" />
+                            <div class="card__text">
+                                <p class="card__title">Experience: {{selectPokemon?.base_experience ?? '00' }}</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SECTION LOADER  -->
+<ng-template #isLoading>
+    <app-loader></app-loader>
+</ng-template>
+<!-- SECTION NO RESULT IMAGE -->
+<ng-template #isNoImage>
+    <img class="img-not-fount" src="./../../../assets/img/card-pokemon.webp" />
+</ng-template>
+<section class="container">
+    <div class="row w-100">
+        <ng-container *ngFor="let items of arrayPokemonByAlphabet; index as i">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card my-3" style="width: 15rem;">
+                    <div class="card-header">
+                        {{abecedario[i]}} - {{items.length}}
+                    </div>
+                    <ul class="list-group list-group-flush" style="height: 220px; overflow-y: scroll;">
+                        <li class="list-group-item" *ngFor="let item of items">{{item?.name | titlecase }}</li>
+                    </ul>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</section>
